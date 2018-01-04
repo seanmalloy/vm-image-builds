@@ -4,3 +4,4 @@ install:
 - ./install_shellcheck.sh
 script:
 - ./packer_syntax.sh
+- ./shellcheck-latest/shellcheck -s bash *.sh
