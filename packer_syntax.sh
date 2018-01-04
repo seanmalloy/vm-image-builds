@@ -3,6 +3,6 @@
 set -u
 set -e
 
-for FILE in $(ls images/*/build.json 2> /dev/null); do
+for FILE in images/*/build.json; do
     ./packer validate -syntax-only
 done
