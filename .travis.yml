@@ -1,1 +1,6 @@
-script: ./packer_syntax.sh
+---
+language: bash
+install:
+- ./install_shellcheck.sh
+script:
+- ./packer_syntax.sh
