@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo done
+echo "done"
 exit 0
