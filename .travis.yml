@@ -2,6 +2,7 @@
 language: bash
 install:
 - ./install_shellcheck.sh
+- ./install_packer.sh
 script:
 - ./packer_syntax.sh
 - ./shellcheck-latest/shellcheck -s bash *.sh
