@@ -21,6 +21,11 @@ if [ "$GIT_BRANCH" = "master" ]; then
 else
     export IMAGE_STATE="dev"
 fi
+
+curl https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip > packer.zip
+unzip packer.zip
     
 IMAGE_NAME=$1
-packer build images/"${IMAGE_NAME}"/build.json
+./packer build images/"${IMAGE_NAME}"/build.json
+
+rm -f packer packer.zip
