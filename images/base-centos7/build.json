@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "gcp_credentials_file": "{{env `GCP_CRED_FILE`}}",
+    "git_branch": "{{env `GIT_BRANCH`}}",
+    "git_sha1": "{{env `GIT_SHA1`}}",
+    "image_state": "{{env `IMAGE_STATE`}}",
+    "image_time_stamp": "{{env `IMAGE_TIME_STAMP`}}"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "{{user `gcp_credentials_file`}}",
+      "image_description": "Base CentOS 7 Image",
+      "image_family": "base-centos7",
+      "image_labels": {
+        "branch": "{{user `git_branch`}}",
+        "sha1": "{{user `git_sha1`}}",
+        "state": "{{user `image_state`}}"
+      },
+      "image_name": "base-centos7-{{user `image_time_stamp`}}",
+      "network": "sandbox-1",
+      "preemptible": true,
+      "project_id": "smalloy-sbx1",
+      "source_image_family": "centos-7",
+      "ssh_username": "packer",
+      "subnetwork": "us-central1-sandbox-1",
+      "zone": "us-central1-a"
+    }
+  ]
+}
