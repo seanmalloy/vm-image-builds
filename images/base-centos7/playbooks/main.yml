@@ -1,0 +1,9 @@
+- name: Customize CentOS 7
+  hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: Apply CentOS Patches
+    yum:
+      name: '*'
+      state: latest
