@@ -26,5 +26,16 @@
       "subnetwork": "us-central1-sandbox-1",
       "zone": "us-central1-a"
     }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "{{template_dir}}/playbooks/main.yml",
+      "extra_arguments": [
+        "--become",
+        "--become-method=sudo",
+        "--become-user=root"
+      ]
+    }
   ]
 }
