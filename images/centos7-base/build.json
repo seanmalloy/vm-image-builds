@@ -10,14 +10,14 @@
     {
       "type": "googlecompute",
       "account_file": "{{user `gcp_credentials_file`}}",
-      "image_description": "Base CentOS 7 Image",
-      "image_family": "base-centos7",
+      "image_description": "CentOS 7 Base Image",
+      "image_family": "centos7-base",
       "image_labels": {
         "branch": "{{user `git_branch`}}",
         "sha1": "{{user `git_sha1`}}",
         "state": "{{user `image_state`}}"
       },
-      "image_name": "base-centos7-{{user `image_time_stamp`}}",
+      "image_name": "centos7-base-{{user `image_time_stamp`}}",
       "network": "sandbox-1",
       "preemptible": true,
       "project_id": "smalloy-sbx1",
