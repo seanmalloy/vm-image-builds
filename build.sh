@@ -22,6 +22,7 @@ else
     export IMAGE_STATE="dev"
 fi
 
+rm -f packer packer.zip
 curl https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip > packer.zip
 unzip packer.zip
     
