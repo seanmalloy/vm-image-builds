@@ -24,6 +24,7 @@
       "source_image_family": "centos-7",
       "ssh_username": "packer",
       "subnetwork": "us-central1-sandbox-1",
+      "tags": ["ssh"],
       "zone": "us-central1-a"
     }
   ],
