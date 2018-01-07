@@ -23,3 +23,11 @@
     service:
       name: jenkins
       enabled: yes
+  - name: Install Git
+    yum:
+      name: git
+      state: latest
+  - name: Install Ansible
+    yum:
+      name: ansible
+      state: latest
