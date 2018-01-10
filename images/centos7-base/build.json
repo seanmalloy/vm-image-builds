@@ -1,6 +1,7 @@
 {
   "variables": {
-    "git_branch": "{{env `GIT_BRANCH`}}",
+    "gce_preempt": "{{env `GCE_PREEMPT`}}",
+    "git_branch": "{{env `BRANCH_NAME`}}",
     "git_sha1": "{{env `GIT_SHA1`}}",
     "image_state": "{{env `IMAGE_STATE`}}",
     "image_time_stamp": "{{env `IMAGE_TIME_STAMP`}}"
@@ -17,7 +18,7 @@
       },
       "image_name": "centos7-base-{{user `image_time_stamp`}}",
       "network": "sandbox-1",
-      "preemptible": true,
+      "preemptible": "{{user `gce_preempt`}}",
       "project_id": "smalloy-sbx1",
       "source_image_family": "centos-7",
       "ssh_username": "packer",

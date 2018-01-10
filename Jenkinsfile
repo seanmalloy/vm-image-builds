@@ -1,11 +1,30 @@
 #!/usr/bin/env groovy
 
+//properties(
+//  [
+//    parameters(
+//      [choiceParam(name: 'IMAGE_NAME', options: ['centos-base', 'centos-jenkins'], description: 'Image to Build')]
+//    )
+//  ]
+//)
+
+properties(
+  [
+    parameters(
+      [
+        string(name: 'IMAGE_NAME', defaultValue: '', description: 'Image to Build'),
+        booleanParam(name: 'GCE_PREEMPT', defaultValue: true, description: '')
+      ]
+    )
+  ]
+)
+
 node {
   checkout scm
 
   try {
     stage('Build') {
-      echo 'build step ...'
+      sh "./build.sh ${params.IMAGE_NAME}"
     }
 
     stage('Test') {
