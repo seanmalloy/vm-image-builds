@@ -23,11 +23,12 @@
     service:
       name: jenkins
       enabled: yes
-  - name: Install Git
+  - name: Install Util RPM Packages
     yum:
-      name: git
+      name: "{{ item }}"
       state: latest
-  - name: Install Ansible
-    yum:
-      name: ansible
-      state: latest
+    with_items:
+      - ansible
+      - git
+      - unzip
+      - zip
