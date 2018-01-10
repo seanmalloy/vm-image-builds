@@ -3,10 +3,20 @@
 set -u
 set -e
 
-# GCP_CRED_FILE
+# GCP Credentials
 #
-# Path to the GCP JSON file. It must
-# be exported in the environment.
+# 1. GCE Instance With Service Account
+#
+# Run this script from a GCE instace with a
+# service account that has the required GCP
+# permissions to run packer. This is the
+# preferred option.
+#
+# 2. Environment Variable
+#
+# Set the environment variable GOOGLE_APPLICATION_CREDENTIALS
+# to the path to a GCP service account credentials file and
+# export the variable.
 
 IMAGE_TIME_STAMP=$(date +%Y%m%d%H%M%S)
 GIT_BRANCH=$(git symbolic-ref --short HEAD)

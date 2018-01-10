@@ -1,6 +1,5 @@
 {
   "variables": {
-    "gcp_credentials_file": "{{env `GCP_CRED_FILE`}}",
     "git_branch": "{{env `GIT_BRANCH`}}",
     "git_sha1": "{{env `GIT_SHA1`}}",
     "image_state": "{{env `IMAGE_STATE`}}",
@@ -9,7 +8,6 @@
   "builders": [
     {
       "type": "googlecompute",
-      "account_file": "{{user `gcp_credentials_file`}}",
       "image_description": "CentOS 7 Base Image",
       "image_family": "centos7-base",
       "image_labels": {
