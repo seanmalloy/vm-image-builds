@@ -1,6 +1,7 @@
 {
   "variables": {
     "gce_preempt": "{{env `GCE_PREEMPT`}}",
+    "gce_zone": "{{env `GCE_ZONE`}}",
     "git_branch": "{{env `BRANCH_NAME`}}",
     "git_sha1": "{{env `GIT_SHA1`}}",
     "image_state": "{{env `IMAGE_STATE`}}",
@@ -24,7 +25,7 @@
       "ssh_username": "packer",
       "subnetwork": "us-central1-sandbox-1",
       "tags": ["ssh"],
-      "zone": "us-central1-a"
+      "zone": "{{user `gce_zone`}}"
     }
   ],
   "provisioners": [

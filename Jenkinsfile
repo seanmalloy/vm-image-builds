@@ -12,8 +12,10 @@ properties(
   [
     parameters(
       [
-        string(name: 'IMAGE_NAME', defaultValue: '', description: 'Image to Build'),
-        booleanParam(name: 'GCE_PREEMPT', defaultValue: true, description: '')
+        choice(name: 'IMAGE_NAME', choices: "centos7-base\ncentos7-jenkins", description: ''),
+        choice(name: 'GCE_PREEMPT', choices: "true\nfalse", description: ''),
+        choice(name: 'GCE_ZONE', choices: "us-central1-a\nus-central1-b\nus-central1-c\nus-central1-f", description: ''),
+        choice(name: 'PACKER_VERSION', choices: "1.1.3", description: '')
       ]
     )
   ]

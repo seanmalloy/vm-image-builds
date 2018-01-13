@@ -21,7 +21,8 @@ set -e
 
 # Magical Jenkins Environment Variables
 #
-# BRANCH_NAME - git branch name
+# BRANCH_NAME    - git branch name
+# PACKER_VERSION - packer version
 
 CHECKPOINT_DISABLE=1
 IMAGE_TIME_STAMP=$(date +%Y%m%d%H%M%S)
@@ -40,7 +41,7 @@ else
 fi
 
 rm -f packer packer.zip manifest.json
-curl https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip > packer.zip
+curl https://releases.hashicorp.com/packer/"${PACKER_VERSION}"/packer_"${PACKER_VERSION}"_linux_amd64.zip > packer.zip
 unzip packer.zip
     
 IMAGE_NAME=$1
