@@ -22,7 +22,7 @@ node {
     }
 
     stage('Test') {
-      echo 'test step ...'
+      sh "./test.sh ${params.IMAGE_NAME}"
     }
 
     stage('Deploy') {
