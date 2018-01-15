@@ -32,3 +32,16 @@
       - git
       - unzip
       - zip
+  - name: Enable Software Collections Yum Repo
+    yum:
+      name: centos-release-scl
+      state: latest
+  - name: Install SCL Ruby 2.4
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - rh-ruby24
+      - rh-ruby24-rubygem-bundler
+      - rh-ruby24-ruby-devel
+      - gcc

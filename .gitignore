@@ -1,4 +1,8 @@
+*.swp
 *.xz
 *.zip
-packer
 manifest.json
+packer
+Gemfile.lock
+.bundle/
+vendor/
