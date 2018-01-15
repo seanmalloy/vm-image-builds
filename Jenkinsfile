@@ -1,13 +1,5 @@
 #!/usr/bin/env groovy
 
-//properties(
-//  [
-//    parameters(
-//      [choiceParam(name: 'IMAGE_NAME', options: ['centos-base', 'centos-jenkins'], description: 'Image to Build')]
-//    )
-//  ]
-//)
-
 properties(
   [
     parameters(
@@ -40,12 +32,11 @@ node {
     }
   }
   catch (ex) {
-    // TODO: add notification, slack?
-    echo "failed caught exception ..."
+    echo "ERROR: pipeline failed caught exception!!!"
     cleanWs()
+    throw ex
   }
   finally {
-    // TODO: add notification, slack?
     cleanWs()
   }
 }
