@@ -45,6 +45,6 @@ curl https://releases.hashicorp.com/packer/"${PACKER_VERSION}"/packer_"${PACKER_
 unzip packer.zip
     
 IMAGE_NAME=$1
-./packer build images/"${IMAGE_NAME}"/build.json
+./packer build -only googlecompute images/"${IMAGE_NAME}"/build.json
 
 rm -f packer packer.zip

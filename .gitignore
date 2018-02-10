@@ -1,3 +1,4 @@
+*.json
 *.swp
 *.xz
 *.zip
@@ -5,4 +6,6 @@ manifest.json
 packer
 Gemfile.lock
 .bundle/
+output/
+packer_cache/
 vendor/

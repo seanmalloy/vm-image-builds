@@ -26,6 +26,22 @@
       "subnetwork": "us-central1-sandbox-1",
       "tags": ["ssh"],
       "zone": "{{user `gce_zone`}}"
+    },
+    {
+      "type": "qemu",
+      "accelerator": "kvm",
+      "communicator": "none",
+      "boot_command": ["<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-7-ks.cfg<enter><wait>"],
+      "disk_size": "20480",
+      "format": "raw",
+      "iso_checksum": "aae20c8052a55cf179af88d9dd35f1a889cd5773",
+      "iso_checksum_type": "sha1",
+      "iso_url": "http://mirrors.mit.edu/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso",
+      "headless": "false",
+      "http_directory": "http",
+      "http_port_max": "10089",
+      "http_port_min": "10082",
+      "output_directory": "output"
     }
   ],
   "provisioners": [
@@ -36,13 +52,19 @@
         "--become",
         "--become-method=sudo",
         "--become-user=root"
-      ]
+      ],
+      "only": ["googlecompute"]
     }
   ],
   "post-processors": [
     {
       "type": "manifest",
       "output": "manifest.json"
+    },
+    {
+      "type": "compress",
+      "output": "output/disk.raw.tar.gz",
+      "only": ["qemu"]
     }
   ]
 }
