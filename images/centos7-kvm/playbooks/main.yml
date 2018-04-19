@@ -1,0 +1,19 @@
+- name: Install KVM
+  hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: Install KVM RPM Packages
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - qemu-kvm
+      - qemu-img
+      - virt-manager
+      - libvirt
+      - libvirt-python
+      - libvirt-client
+      - virt-install
+      - virt-viewer
+      - bridge-utils
