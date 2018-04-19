@@ -1,0 +1,49 @@
+{
+  "variables": {
+    "gce_preempt": "{{env `GCE_PREEMPT`}}",
+    "gce_zone": "{{env `GCE_ZONE`}}",
+    "git_branch": "{{env `BRANCH_NAME`}}",
+    "git_sha1": "{{env `GIT_SHA1`}}",
+    "image_state": "{{env `IMAGE_STATE`}}",
+    "image_time_stamp": "{{env `IMAGE_TIME_STAMP`}}"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "image_description": "KVM CentOS 7 Image",
+      "image_family": "centos7-kvm",
+      "image_labels": {
+        "branch": "{{user `git_branch`}}",
+        "sha1": "{{user `git_sha1`}}",
+        "state": "{{user `image_state`}}"
+      },
+      "image_name": "centos7-kvm-{{user `image_time_stamp`}}",
+      "network": "sandbox-1",
+      "preemptible": "{{user `gce_preempt`}}",
+      "project_id": "smalloy-sbx1",
+      "source_image_family": "centos7-base",
+      "ssh_username": "packer",
+      "subnetwork": "us-central1-sandbox-1",
+      "tags": ["ssh"],
+      "zone": "{{user `gce_zone`}}",
+      "image_licenses": ["projects/vm-options/global/licenses/enable-vmx"]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "{{template_dir}}/playbooks/main.yml",
+      "extra_arguments": [
+        "--become",
+        "--become-method=sudo",
+        "--become-user=root"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json"
+    }
+  ]
+}
