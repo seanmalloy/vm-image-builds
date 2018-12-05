@@ -31,7 +31,7 @@
     file:
       path: /etc/vault.d
       state: directory
-      user: vault
+      owner: vault
       group: vault
       mode: 0750
   - name: Create /etc/vault.d/config.hcl
