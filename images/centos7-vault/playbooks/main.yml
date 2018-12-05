@@ -1,0 +1,54 @@
+- name: Install Vault
+  hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: Create Vault Group
+    group:
+      name: vault
+      state: present
+      system: yes
+  - name: Create Vault User
+    user:
+      name: vault
+      group: vault
+      state: present
+      system: yes
+  - name: Install Util RPM Packages
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - unzip
+  - name: Install Vault Binary
+    unarchive:
+      src: https://releases.hashicorp.com/vault/1.0.0/vault_1.0.0_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+  - name: Enable mlock
+    command: setcap cap_ipc_lock=+ep /usr/local/bin/vault
+  - name: Create /etc/vault.d Directory
+    file:
+      path: /etc/vault.d
+      state: directory
+      user: vault
+      group: vault
+      mode: 0750
+  - name: Create /etc/vault.d/config.hcl
+    copy:
+      src: files/config.hcl
+      dest: /etc/vault.d/config.hcl
+      owner: vault
+      group: vault
+      mode: 0640
+  - name: Create /etc/systemd/system/vault.service
+    copy:
+      src: files/vault.service
+      dest: /etc/systemd/system/vault.service
+      owner: root
+      group: root
+      mode: 0644
+  - name: Enable Vault Service
+    service:
+      name: vault
+      enabled: yes
