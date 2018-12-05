@@ -1,0 +1,16 @@
+[Unit]
+Description=Vault Secrets Management Server
+Documentation=https://www.vaultproject.io
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=vault
+Group=vault
+ExecStart=/usr/local/bin/vault server -config=/etc/vault.d -log-level=info
+Restart=always
+StartLimitBurst=0
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
