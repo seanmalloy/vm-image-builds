@@ -14,12 +14,11 @@
       group: vault
       state: present
       system: yes
+      shell: /sbin/nologin
   - name: Install Util RPM Packages
     yum:
-      name: "{{ item }}"
+      name: unzip
       state: latest
-    with_items:
-      - unzip
   - name: Install Vault Binary
     unarchive:
       src: https://releases.hashicorp.com/vault/1.0.0/vault_1.0.0_linux_amd64.zip
