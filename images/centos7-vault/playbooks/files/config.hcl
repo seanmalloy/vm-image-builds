@@ -13,3 +13,5 @@ seal "gcpckms" {
   key_ring   = "vault-keyring"
   crypto_key = "vault-key"
 }
+
+ui = true
