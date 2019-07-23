@@ -7,7 +7,7 @@ properties(
         choice(name: 'IMAGE_NAME', choices: "centos7-base\ncentos7-jenkins\ncentos7-kvm\ncentos7-vault", description: ''),
         choice(name: 'GCE_PREEMPT', choices: "true\nfalse", description: ''),
         choice(name: 'GCE_ZONE', choices: "us-central1-a\nus-central1-b\nus-central1-c\nus-central1-f", description: ''),
-        choice(name: 'PACKER_VERSION', choices: "1.2.2\n1.2.0", description: '')
+        choice(name: 'PACKER_VERSION', choices: "1.4.2\n1.2.2", description: '')
       ]
     )
   ]
