@@ -21,7 +21,7 @@
       state: latest
   - name: Install Vault Binary
     unarchive:
-      src: https://releases.hashicorp.com/vault/1.0.3/vault_1.0.3_linux_amd64.zip
+      src: https://releases.hashicorp.com/vault/1.1.3/vault_1.1.3_linux_amd64.zip
       dest: /usr/local/bin
       remote_src: yes
   - name: Enable mlock
