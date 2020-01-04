@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/seanmalloy/vm-image-builds.svg?branch=master)](https://travis-ci.com/seanmalloy/vm-image-builds)
+
 ## Virtual Machine Image Builds
 Automation for building virtual machine images.
 
