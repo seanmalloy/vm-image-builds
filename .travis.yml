@@ -1,4 +1,7 @@
 ---
+branches:
+  only:
+  - master
 language: bash
 install:
 - ./install_shellcheck.sh
