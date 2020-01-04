@@ -7,5 +7,5 @@ group :test do
   gem "kitchen-google", "1.4.0"
   gem "kitchen-inspec", "0.22.0"
   gem "rubocop", "0.52.1"
-  gem "ffi", "1.9.18"
+  gem "ffi", "1.9.24"
 end
